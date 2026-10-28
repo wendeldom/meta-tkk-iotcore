@@ -7,10 +7,10 @@ file://include/third_party/nlohmann/LICENSE.MIT;md5=e046aa7fd39db177f5ca0cefe06d
 file://include/third_party/utfcpp/LICENSE;md5=e4224ccaecb14d942c71d31bef20d78c \
 "
 
-SRC_URI = "git://...;protocol=ssh;branch=main"
-SRCREV = "..."
+SRC_URI = "git:///workspace/tkk-iotgateway-app;protocol=file;branch=main"
+SRCREV = "10caa0b2cb342d8a5977d64706cea782b3f37460"
+PV = "0.1.0+git"
 S = "${WORKDIR}/git"
 
-DEPENDS = "nlohmann-json mosquitto"
 inherit cmake
-EXTRA_OECMAKE = "-DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release"
+EXTRA_OECMAKE = "-DTKK_BUILD_TESTS=OFF -DTKK_CONFIG_DIR=/etc/tkk-iotgateway"
