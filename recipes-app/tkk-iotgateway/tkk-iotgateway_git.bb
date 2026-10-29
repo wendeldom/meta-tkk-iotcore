@@ -8,7 +8,7 @@ file://include/third_party/utfcpp/LICENSE;md5=e4224ccaecb14d942c71d31bef20d78c \
 "
 
 SRC_URI = "git:///workspace/tkk-iotgateway-app;protocol=file;branch=main"
-SRCREV = "10caa0b2cb342d8a5977d64706cea782b3f37460"
+SRCREV = "d0ff08ebb8186f201f43f57170ec68cc3e2b86d1"
 PV = "0.1.0+git"
 S = "${WORKDIR}/git"
 
@@ -24,4 +24,7 @@ SYSTEMD_AUTO_ENABLE = "enable"
 do_install:append() {
     install -d ${D}${systemd_system_unitdir}
     install -m 0644 ${WORKDIR}/tkk-iotgateway.service ${D}${systemd_system_unitdir}/
+
+    install -d ${D}${sysconfdir}/tkk-iotgateway/s7
+    install -d ${D}${sysconfdir}/tkk-iotgateway/opcua
 }
