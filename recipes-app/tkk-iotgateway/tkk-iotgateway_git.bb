@@ -12,5 +12,16 @@ SRCREV = "10caa0b2cb342d8a5977d64706cea782b3f37460"
 PV = "0.1.0+git"
 S = "${WORKDIR}/git"
 
-inherit cmake
+inherit cmake systemd
+
 EXTRA_OECMAKE = "-DTKK_BUILD_TESTS=OFF -DTKK_CONFIG_DIR=/etc/tkk-iotgateway"
+
+SRC_URI += "file://tkk-iotgateway.service"
+
+SYSTEMD_SERVICE:${PN} = "tkk-iotgateway.service"
+SYSTEMD_AUTO_ENABLE = "enable"
+
+do_install:append() {
+    install -d ${D}${systemd_system_unitdir}
+    install -m 0644 ${WORKDIR}/tkk-iotgateway.service ${D}${systemd_system_unitdir}/
+}
