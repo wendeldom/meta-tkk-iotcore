@@ -41,7 +41,6 @@ RDEPENDS:packagegroup-tkk-iotcore-tools-kernel = "\
     i2c-tools       \
     strace          \
     usbutils        \
-    \
     evtest          \
     memtester       \
     mtd-utils       \
